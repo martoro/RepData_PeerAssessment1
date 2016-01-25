@@ -54,9 +54,14 @@ illustrate the daily activity pattern.
 # Compute average number of steps per interval.
 steps_per_interval = activity %>% group_by(interval) %>%
   summarise(steps = mean(steps, na.rm=TRUE))
+
+# Compute interval with most steps.
+max_interval = steps_per_interval$interval[which.max(steps_per_interval$steps)]
 ```
 
-We graph it using ggplot2.
+The interval with maximum number of steps is 835.
+
+We graph the pattern using ggplot2.
 
 
 ```r

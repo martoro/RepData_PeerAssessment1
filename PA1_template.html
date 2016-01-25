@@ -94,8 +94,12 @@ steps_day_median = median(steps_per_day$steps, na.rm=TRUE)</code></pre>
 <p>We compute the average number of steps per interval across all days to illustrate the daily activity pattern.</p>
 <pre class="r"><code># Compute average number of steps per interval.
 steps_per_interval = activity %&gt;% group_by(interval) %&gt;%
-  summarise(steps = mean(steps, na.rm=TRUE))</code></pre>
-<p>We graph it using ggplot2.</p>
+  summarise(steps = mean(steps, na.rm=TRUE))
+
+# Compute interval with most steps.
+max_interval = steps_per_interval$interval[which.max(steps_per_interval$steps)]</code></pre>
+<p>The interval with maximum number of steps is 835.</p>
+<p>We graph the pattern using ggplot2.</p>
 <pre class="r"><code>library(ggplot2)
 
 # Plot average steps per interval.
